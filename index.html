@@ -20,7 +20,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: var(--sky);
+            background-color: var(--sky);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='30' y='35' font-size='20' text-anchor='middle' fill='%23000000' opacity='0.08'%3E%24%3C/text%3E%3C/svg%3E");
+            background-repeat: repeat;
             min-height: 100vh;
             font-family: 'Syne', sans-serif;
             overflow-x: hidden;
@@ -35,7 +37,6 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
-        /* POST-IT NOTES */
         .post-it {
             position: fixed;
             width: 140px;
@@ -93,6 +94,12 @@
         .sparkle:nth-child(4) { top: 75%; left: 92%; animation-delay: 0.6s; }
         .sparkle:nth-child(5) { top: 35%; left: 4%; animation-delay: 0.8s; }
         .sparkle:nth-child(6) { top: 65%; left: 96%; animation-delay: 1s; }
+        .sparkle:nth-child(7) { top: 20%; left: 25%; animation-delay: 0.3s; }
+        .sparkle:nth-child(8) { top: 45%; left: 75%; animation-delay: 0.5s; }
+        .sparkle:nth-child(9) { top: 80%; left: 20%; animation-delay: 0.7s; }
+        .sparkle:nth-child(10) { top: 30%; left: 85%; animation-delay: 0.9s; }
+        .sparkle:nth-child(11) { top: 60%; left: 15%; animation-delay: 1.1s; }
+        .sparkle:nth-child(12) { top: 90%; left: 80%; animation-delay: 1.3s; }
 
         @keyframes sparkle {
             0%, 100% { opacity: 0; transform: scale(0.5) rotate(0deg); }
@@ -134,24 +141,28 @@
             font-family: 'Instrument Serif', serif;
             font-size: clamp(2.5rem, 9vw, 5rem);
             color: var(--cream);
-            text-shadow: 5px 5px 0 var(--black), -2px -2px 0 var(--pink);
+            text-shadow: 3px 3px 0 var(--black);
             letter-spacing: -0.03em;
             text-align: center;
             line-height: 0.95;
             text-transform: uppercase;
         }
 
-        .name span { display: block; font-style: italic; color: var(--chartreuse); text-shadow: 4px 4px 0 var(--black), -2px -2px 0 var(--cream); }
+        .name span { display: block; font-style: italic; color: var(--chartreuse); text-shadow: 3px 3px 0 var(--black); }
+
+        @media (min-width: 601px) {
+            .name { text-shadow: 5px 5px 0 var(--black), -2px -2px 0 var(--pink); }
+            .name span { text-shadow: 4px 4px 0 var(--black), -2px -2px 0 var(--cream); }
+        }
 
         .intro {
             max-width: 480px;
             text-align: center;
             font-size: 1rem;
-            line-height: 1.7;
+            line-height: 1.9;
             color: var(--black);
             background: var(--cream);
-            padding: 20px 25px;
-            border-radius: 4px;
+            padding: 22px 25px 32px 25px;
             border: 3px solid var(--black);
             box-shadow: 6px 6px 0 var(--black);
             transform: rotate(-1deg);
@@ -191,7 +202,6 @@
         .link.featured { background: var(--pink); color: var(--cream); border-color: var(--black); }
         .link.featured:hover { background: var(--chartreuse); color: var(--black); }
 
-        /* GAME SECTION */
         .game-section { margin-top: 50px; width: 100%; max-width: 380px; }
         .game-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; padding: 0 5px; }
         .game-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--black); font-weight: 800; }
@@ -204,7 +214,10 @@
         .game-overlay-sub { font-size: 0.7rem; color: #666; text-transform: uppercase; letter-spacing: 0.1em; }
         .game-controls { margin-top: 12px; font-size: 0.65rem; color: var(--black); text-align: center; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
 
-        /* YEARBOOK SECTION */
+        @media (max-width: 768px) {
+            .post-it { display: none; }
+        }
+
         .yearbook-section { margin-top: 60px; width: 100%; max-width: 550px; }
         .yearbook-title { font-family: 'Permanent Marker', cursive; font-size: 2rem; color: var(--black); text-align: center; margin-bottom: 20px; transform: rotate(-2deg); }
         .yearbook-title span { color: var(--pink); }
@@ -363,41 +376,14 @@
             display: inline-block;
         }
 
-        .yearbook-btn.send {
-            background: var(--pink);
-            color: white;
-        }
+        .yearbook-btn.send { background: var(--pink); color: white; }
+        .yearbook-btn.send:hover { background: var(--chartreuse); color: var(--black); transform: translateY(-2px); box-shadow: 3px 3px 0 var(--black); }
+        .yearbook-btn.clear { background: var(--cream); color: var(--black); }
+        .yearbook-btn.clear:hover { background: #ffcccc; transform: translateY(-2px); box-shadow: 3px 3px 0 var(--black); }
 
-        .yearbook-btn.send:hover {
-            background: var(--chartreuse);
-            color: var(--black);
-            transform: translateY(-2px);
-            box-shadow: 3px 3px 0 var(--black);
-        }
-
-        .yearbook-btn.clear {
-            background: var(--cream);
-            color: var(--black);
-        }
-
-        .yearbook-btn.clear:hover {
-            background: #ffcccc;
-            transform: translateY(-2px);
-            box-shadow: 3px 3px 0 var(--black);
-        }
-
-        .yearbook-note {
-            margin-top: 15px;
-            font-size: 0.7rem;
-            color: #888;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+        .yearbook-note { margin-top: 15px; font-size: 0.7rem; color: #888; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; }
 
         .footer { margin-top: 60px; font-size: 0.7rem; color: var(--black); text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
-
-        @media (max-width: 768px) { .post-it { display: none; } }
 
         @media (max-width: 600px) {
             .photo-frame { width: 200px; height: 260px; }
@@ -412,7 +398,6 @@
 <body>
     <div class="grain"></div>
     
-    <!-- POST-IT NOTES -->
     <div class="post-it post-it-yellow" style="top: 12%; left: 5%; transform: rotate(-6deg);">you can just do things</div>
     <div class="post-it post-it-pink" style="top: 8%; right: 8%; transform: rotate(4deg);">you're absolutely right</div>
     <div class="post-it post-it-blue" style="top: 35%; left: 3%; transform: rotate(3deg);">gaslight gatekeep girlboss</div>
@@ -420,6 +405,12 @@
     <div class="post-it post-it-orange" style="top: 75%; left: 6%; transform: rotate(-3deg);">let's circle back</div>
     <div class="post-it post-it-purple" style="top: 70%; right: 6%; transform: rotate(7deg);">software is the new content</div>
     
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
+    <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
     <div class="sparkle"></div>
@@ -470,7 +461,6 @@
                 </a>
             </nav>
 
-            <!-- DISCO SNAKE GAME -->
             <section class="game-section">
                 <div class="game-header">
                     <span class="game-title">🪩 Disco Snake</span>
@@ -479,14 +469,13 @@
                 <div class="game-container">
                     <canvas id="snakeCanvas"></canvas>
                     <div class="game-overlay" id="gameOverlay">
-                        <div class="game-overlay-text" id="overlayText">Press Space to Start</div>
-                        <div class="game-overlay-sub">Arrow keys to move</div>
+                        <div class="game-overlay-text" id="overlayText">Tap or Press Space</div>
+                        <div class="game-overlay-sub">Use buttons or swipe to move</div>
                     </div>
                 </div>
-                <p class="game-controls">Space to start • Arrows to move</p>
+                <p class="game-controls">Space to start • Arrows or swipe to move</p>
             </section>
 
-            <!-- YEARBOOK SECTION -->
             <section class="yearbook-section">
                 <h2 class="yearbook-title">✏️ Sign My <span>Yearbook</span></h2>
                 <div class="yearbook-page">
@@ -524,12 +513,12 @@
                 <p class="yearbook-note">Your message opens in your email app 💌</p>
             </section>
 
-            <footer class="footer">© 2025</footer>
+            <footer class="footer">© 2026 Heather L. Jackson. All rights reserved.</footer>
         </div>
     </div>
 
     <script>
-        // ============ DRAGGABLE POST-ITS ============
+        // DRAGGABLE POST-ITS
         const postIts = document.querySelectorAll('.post-it');
         postIts.forEach(postIt => {
             let isDragging = false;
@@ -561,7 +550,7 @@
             document.addEventListener('touchend', onMouseUp);
         });
 
-        // ============ YEARBOOK ============
+        // YEARBOOK
         let currentColor = '#2d3436';
         let stickers = [];
 
@@ -584,23 +573,22 @@
 
         stickerBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                const sticker = btn.dataset.sticker;
-                stickers.push(sticker);
+                stickers.push(btn.dataset.sticker);
                 renderStickers();
             });
         });
 
         function renderStickers() {
             stickerPreview.innerHTML = stickers.map((s, i) => 
-                '<span class="placed-sticker" data-index="' + i + '" title="Click to remove">' + s + '</span>'
+                '<span class="placed-sticker" data-index="' + i + '">' + s + '</span>'
             ).join('');
-            
             document.querySelectorAll('.placed-sticker').forEach(el => {
                 el.addEventListener('click', () => {
                     stickers.splice(parseInt(el.dataset.index), 1);
                     renderStickers();
                 });
             });
+            updateMailtoLink();
         }
 
         clearBtn.addEventListener('click', () => {
@@ -619,25 +607,16 @@
             const name = nameInput.value.trim() || 'Anonymous';
             const message = messageInput.value.trim() || 'Just wanted to sign your yearbook!';
             const stickerStr = stickers.length > 0 ? '%0A%0AStickers: ' + stickers.join(' ') : '';
-            
             const subject = encodeURIComponent('Yearbook Signature from ' + name);
             const body = 'Hey Heather!%0A%0A"' + encodeURIComponent(message) + '"%0A%0A— ' + encodeURIComponent(name) + stickerStr + '%0A%0A---%0ASent from hjack.dev';
-            
             sendBtn.href = 'mailto:heather@prom.dev?subject=' + subject + '&body=' + body;
         }
 
         nameInput.addEventListener('input', updateMailtoLink);
         messageInput.addEventListener('input', updateMailtoLink);
-        
-        const originalRenderStickers = renderStickers;
-        renderStickers = function() {
-            originalRenderStickers();
-            updateMailtoLink();
-        };
-
         updateMailtoLink();
 
-        // ============ DISCO SNAKE GAME ============
+        // DISCO SNAKE
         const canvas = document.getElementById('snakeCanvas');
         const ctx = canvas.getContext('2d');
         const overlay = document.getElementById('gameOverlay');
@@ -763,6 +742,7 @@
             }
         });
 
+        // Touch swipe controls
         let touchStartX = 0, touchStartY = 0;
         canvas.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY; if (!gameRunning || gameOver) startGame(); });
         canvas.addEventListener('touchmove', (e) => { e.preventDefault(); }, { passive: false });
